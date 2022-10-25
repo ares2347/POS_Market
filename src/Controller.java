@@ -32,6 +32,7 @@ public class Controller {
 
     @FXML
     private void handleAddProduct(ActionEvent actionEvent) {
+        System.out.println("....");
     }
 
     @FXML

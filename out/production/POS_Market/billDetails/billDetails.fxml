@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="876.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billDetails.BillDetailsController">
+   <children>
+      <Text layoutX="171.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GROUP 3 MARKET">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="130.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8A, Ton That Thuyet street, My Dinh, Ha Noi" textAlignment="CENTER" wrappingWidth="373.82275390625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="txBillId" layoutX="52.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bill ID :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="txDate" layoutX="52.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tbvBillProduct" layoutX="30.0" layoutY="250.0" prefHeight="290.0" prefWidth="554.0">
+        <columns>
+          <TableColumn fx:id="tdName" prefWidth="125.0" text="Name" />
+          <TableColumn fx:id="tdUnit" prefWidth="62.0" text="Unit" />
+            <TableColumn fx:id="tdQuantity" prefWidth="88.0" text="Quantity" />
+            <TableColumn fx:id="tdPrice" prefWidth="116.0" text="Price" />
+            <TableColumn fx:id="tdSubTotal" prefWidth="162.0" text="Sub Total" />
+        </columns>
+      </TableView>
+      <Text layoutX="33.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text id="txBillId" fx:id="txTotal" layoutX="130.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text id="txDate" layoutX="116.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="107.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button onAction="#goToNewBill" layoutX="123.0" layoutY="664.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="113.0" text="New Bill" />
+      <Button onAction="#goToHistory" layoutX="350.0" layoutY="664.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="113.0" text="History" />
+   </children>
+</AnchorPane>

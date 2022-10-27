@@ -64,7 +64,7 @@ public class Controller implements Initializable {
         ObservableList<Products> pr2 = FXCollections.observableArrayList();
         pr.addAll(rp.all());
         cboSelectNameProduct.setItems(pr);
-
+        System.out.println("...");
 
     }
 }

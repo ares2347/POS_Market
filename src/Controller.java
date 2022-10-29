@@ -1,4 +1,6 @@
-import dao.impls.Repository;
+import dao.impls.BillsRepository;
+import dao.impls.ProductsRepository;
+import entities.Bill;
 import entities.Products;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -38,22 +41,21 @@ public class Controller implements Initializable {
     private TextField txtQuantity;
     @FXML
     private TextField txtPrice;
-
+    private ObservableList<Products> productsObservableList = FXCollections.observableArrayList();
     @FXML
     private void handleAddProduct(ActionEvent actionEvent) {
         Float price = Float.parseFloat(txtPrice.getText());
         Integer qty = Integer.parseInt(txtQuantity.getText());
         String s = cboSelectNameProduct.getValue().getName();
-        Products newProducts = new Products(null, s, price, qty);
-
-        tbvAddProduct.getItems().add(newProducts);
-
+        productsObservableList.add(new Products(null, s, price, qty));
+        tbvAddProduct.getItems().setAll(productsObservableList);
         System.out.println("qty: "+qty);
     }
 
 
     @FXML
     private void handleSubmit(ActionEvent actionEvent) {
+        System.out.println(productsObservableList);
     }
 
     @FXML
@@ -66,20 +68,19 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         tdName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tdUnit.setCellValueFactory(new PropertyValueFactory<>("unit"));
         tdQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         tdPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         tdSubTotal.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
 
-
-        Repository rp = new Repository();
+        ProductsRepository rp = new ProductsRepository();
+        BillsRepository b = new BillsRepository();
         ObservableList<Products> pr = FXCollections.observableArrayList();
         pr.addAll(rp.all());
         cboSelectNameProduct.setItems(pr);
+        System.out.println(b.create(new Bill()).getId());
         System.out.println("...");
-
     }
 
     public void choose(ActionEvent actionEvent) {

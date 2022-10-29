@@ -7,7 +7,7 @@ import helper.Connector;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class Repository implements IRepository<Products> {
+public class ProductsRepository implements IRepository<Products> {
 
     @Override
     public ArrayList<Products> all() {
@@ -31,7 +31,7 @@ public class Repository implements IRepository<Products> {
     }
 
     @Override
-    public boolean create(Products products) {
+    public Products create(Products products) {
 //        try {
 //            String sql_txt  = "insert into products(name, author, qty) values(?,?,?)";
 //            Connector conn = Connector.getInstance();
@@ -46,8 +46,8 @@ public class Repository implements IRepository<Products> {
 //        } catch (Exception e){
 //
 //        }
-
-        return false;
+//
+        return new Products();
     }
 
     @Override

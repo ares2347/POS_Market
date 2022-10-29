@@ -4,8 +4,18 @@ public class Products {
     public Integer id;
     public String name;
     public float price;
+    public Integer quantity;
+
+
 
     public Products() {
+    }
+
+    public Products(Integer id, String name, float price, Integer quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
 
     public Integer getId() {
@@ -28,14 +38,16 @@ public class Products {
         return price;
     }
 
-    public Products(Integer id, String name, float price) {
-        this.id = id;
-        this.name = name;
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     @Override

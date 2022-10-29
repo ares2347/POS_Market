@@ -12,13 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     @FXML
-    private TableColumn<Products, Initializable> tdId;
+    private TableColumn<Products, Integer> tdId;
     @FXML
     private TableColumn<Products, String> tdName;
     @FXML
@@ -42,8 +41,16 @@ public class Controller implements Initializable {
 
     @FXML
     private void handleAddProduct(ActionEvent actionEvent) {
+        Float price = Float.parseFloat(txtPrice.getText());
+        Integer qty = Integer.parseInt(txtQuantity.getText());
+        String s = cboSelectNameProduct.getValue().getName();
+        Products newProducts = new Products(null, s, price, qty);
 
+        tbvAddProduct.getItems().add(newProducts);
+
+        System.out.println("qty: "+qty);
     }
+
 
     @FXML
     private void handleSubmit(ActionEvent actionEvent) {
@@ -59,12 +66,25 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        tdName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tdUnit.setCellValueFactory(new PropertyValueFactory<>("unit"));
+        tdQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        tdPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        tdSubTotal.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
+
+
         Repository rp = new Repository();
         ObservableList<Products> pr = FXCollections.observableArrayList();
-        ObservableList<Products> pr2 = FXCollections.observableArrayList();
         pr.addAll(rp.all());
         cboSelectNameProduct.setItems(pr);
 
 
+    }
+
+    public void choose(ActionEvent actionEvent) {
+        String s = String.valueOf(cboSelectNameProduct.getValue().getPrice());
+        txtPrice.setText(s);
+        txtPrice.setEditable(false);
     }
 }

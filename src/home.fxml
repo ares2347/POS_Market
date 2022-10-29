@@ -13,7 +13,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <ComboBox fx:id="cboSelectNameProduct" layoutX="11.0" layoutY="51.0" prefHeight="51.0" prefWidth="454.0" promptText="Name Product" />
+      <ComboBox onAction="#choose" fx:id="cboSelectNameProduct" layoutX="11.0" layoutY="51.0" prefHeight="51.0" prefWidth="454.0" promptText="Name Product" />
       <TextField fx:id="txtQuantity" layoutX="533.0" layoutY="51.0" prefHeight="51.0" prefWidth="130.0" promptText="Quantity">
          <font>
             <Font size="24.0" />
@@ -41,7 +41,6 @@
       </Button>
       <TableView fx:id="tbvAddProduct" layoutX="11.0" layoutY="166.0" prefHeight="372.0" prefWidth="1089.0">
         <columns>
-          <TableColumn fx:id="tdId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="tdName" prefWidth="456.0" text="Name" />
             <TableColumn fx:id="tdUnit" prefWidth="84.0" text="Unit" />
             <TableColumn fx:id="tdQuantity" prefWidth="82.0" text="Quantity" />

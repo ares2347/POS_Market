@@ -20,7 +20,8 @@ public class Repository implements IRepository<Products> {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 Float price = rs.getFloat("price");
-                Products p = new Products(id,name,price);
+                Integer qty = rs.getInt("quantity");
+                Products p = new Products(id,name,price, qty);
                 pr.add(p);
             }
         }catch (Exception e){
@@ -31,6 +32,21 @@ public class Repository implements IRepository<Products> {
 
     @Override
     public boolean create(Products products) {
+//        try {
+//            String sql_txt  = "insert into products(name, author, qty) values(?,?,?)";
+//            Connector conn = Connector.getInstance();
+//            ArrayList arr = new ArrayList();
+//            arr.add(book.getName());
+//            arr.add(book.getAuthor());
+//            arr.add(book.getQty());
+//
+//            if (conn.executeAdd(sql_txt,arr)) {
+//                return true;
+//            }
+//        } catch (Exception e){
+//
+//        }
+
         return false;
     }
 
@@ -47,24 +63,4 @@ public class Repository implements IRepository<Products> {
     @Override
     public Products findOne(Integer id){return null;}
 
-    @Override
-    public Products findPrice(Integer id) {
-        try{
-            String sql_txt = "SELECT price FROM products WHERE name = ?";
-            Connector conn = Connector.getInstance();
-            ArrayList arr = new ArrayList<>();
-            arr.add(id);
-            ResultSet rs = conn.executeQuery(sql_txt, arr);
-            while (rs.next()){
-                int Id = rs.getInt("id");
-                String name = rs.getString("name");
-                float price = rs.getFloat("price");
-                return new Products(Id, name, price);
-
-            }
-        } catch (Exception e) {
-
-        }
-        return  null;
-    }
 }

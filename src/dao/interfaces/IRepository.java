@@ -10,5 +10,5 @@ public interface IRepository<S> {
     boolean update(S s);
     boolean delete(S s);
     S findOne(Integer id);
-    S findPrice(Integer id);
+
 }

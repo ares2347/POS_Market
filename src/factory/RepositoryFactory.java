@@ -1,6 +1,6 @@
 package factory;
 
-import dao.impls.Repository;
+import dao.impls.ProductsRepository;
 import dao.interfaces.IRepository;
 import enums.RepositoryType;
 
@@ -9,7 +9,7 @@ public class RepositoryFactory {
 
     public static IRepository createRepository(RepositoryType type){
         switch (type){
-            case PRODUCT: return new Repository();
+            case PRODUCT: return new ProductsRepository();
             default: throw new IllegalArgumentException("Error");
         }
     }

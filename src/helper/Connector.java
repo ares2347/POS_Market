@@ -5,9 +5,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Connector {
-    public final static String connectionString = "jdbc:mysql://localhost:8889/posmarket";
+    public final static String connectionString = "jdbc:mysql://localhost:3306/posmarket?allowMultiQueries=true";
     public final static String user = "root";
-    public final static String pwd = "root";// neu la xampp: "" , mamp: "root"
+    public final static String pwd = "";// neu la xampp: "" , mamp: "root"
 
     Connection conn;
 
@@ -37,8 +37,24 @@ public class Connector {
         try {
             return getStatement().executeQuery(sql);
         }catch (Exception e){
+            System.out.println(e + "err sql");
             return null;
         }
+    }
+    public Integer getKeysQuery(String sql){
+        Integer id = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            while (rs.next()){
+                id = Integer.parseInt(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(e + "err sql");
+            return 0;
+        }
+        return id;
     }
 
     public boolean executeQuery(String sql){

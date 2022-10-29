@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="597.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billsHistory.BillsHistoryController">
+   <children>
+      <TableView fx:id="tbvBill" layoutX="25.0" layoutY="100.0" prefHeight="405.0" prefWidth="561.0">
+        <columns>
+          <TableColumn fx:id="tdId" prefWidth="127.0" text="ID" />
+          <TableColumn fx:id="tdDate" prefWidth="261.0" text="DATE" />
+            <TableColumn fx:id="tdNameCustomer" prefWidth="172.0" text="NAME CUSTOMER" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtSearch" layoutX="195.0" layoutY="18.0" prefHeight="48.0" prefWidth="343.0" promptText="id, name customer" />
+      <Button onAction="#handleSearch" layoutX="39.0" layoutY="18.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="116.0" text="Search" />
+      <Button onAction="#goToNewBill" layoutX="25.0" layoutY="538.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="116.0" text="New Bill" />
+   </children>
+</AnchorPane>

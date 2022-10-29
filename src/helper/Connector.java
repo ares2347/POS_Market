@@ -5,9 +5,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Connector {
-    public final static String connectionString = "jdbc:mysql://localhost:3306/java2";
+    public final static String connectionString = "jdbc:mysql://localhost:8889/posmarket";
     public final static String user = "root";
-    public final static String pwd = "";// neu la xampp: "" , mamp: "root"
+    public final static String pwd = "root";// neu la xampp: "" , mamp: "root"
 
     Connection conn;
 
@@ -90,5 +90,6 @@ public class Connector {
             return null;
         }
     }
+
 }
 

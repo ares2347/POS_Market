@@ -2,11 +2,15 @@ import dao.impls.BillsRepository;
 import dao.impls.ProductsRepository;
 import entities.Bill;
 import entities.Products;
+import helper.DefaultScene;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -63,7 +67,10 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void handleChangeHistory(ActionEvent actionEvent) {
+    private void handleChangeHistory(ActionEvent actionEvent) throws Exception {
+        Parent history = FXMLLoader.load(getClass().getResource("./billsHistory/billsHistory.fxml"));
+        Main.rootStage.setTitle("History");
+        Main.rootStage.setScene(new DefaultScene(history));
     }
 
     @Override

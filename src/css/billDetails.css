@@ -1,0 +1,41 @@
+.root{
+    -bg-gradient: linear-gradient(from 25px 25px to 500px 300px, #a1ffce, #faffd1);
+    -hlight-gradient: linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+
+    -primary: #81c48355;
+    -secondary: #375FCB;
+    -tertiary: #fcc200;
+    -tertiary-armed: #FDDD71;
+}
+
+.shadow-pane{
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+.table-view,
+.table-view .column-header,
+.table-view .column-header-background .filler,
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: -hlight-gradient;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+#txMartketName,#txBillId,#txDate,#txTotal,#btHistory,#btNewBill,#txAddress {
+    -fx-font-family: "Arial Rounded MT Bold";
+}
+
+#btHistory,#btNewBill {
+    -fx-background-radius: 20;
+    -fx-background-color: -hlight-gradient;
+}
+#apBillDetails {
+    -fx-background-color: -bg-gradient;
+    -fx-background-position: center center;
+    -fx-background-repeat: stretch;
+}

@@ -34,18 +34,18 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button onAction="#handleChangeHistory" layoutX="366.0" layoutY="586.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="114.0" text="History">
+      <Button fx:id="test"  layoutX="366.0" layoutY="586.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="114.0" text="History">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TableView fx:id="tbvAddProduct" layoutX="11.0" layoutY="166.0" prefHeight="372.0" prefWidth="1089.0">
+      <TableView  fx:id="tbvAddProduct" layoutX="11.0" layoutY="166.0" prefHeight="372.0" prefWidth="1089.0">
         <columns>
           <TableColumn fx:id="tdName" prefWidth="456.0" text="Name" />
             <TableColumn fx:id="tdUnit" prefWidth="84.0" text="Unit" />
-            <TableColumn fx:id="tdQuantity" prefWidth="82.0" text="Quantity" />
+            <TableColumn  fx:id="tdQuantity" prefWidth="82.0" text="Quantity" />
             <TableColumn fx:id="tdPrice" prefWidth="188.0" text="Price" />
-            <TableColumn fx:id="tdSubTotal" prefWidth="203.0" text="Sub Total" />
+            <TableColumn  fx:id="tdSubTotal" prefWidth="203.0" text="Sub Total" />
         </columns>
       </TableView>
       <Text layoutX="833.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total :">

@@ -4,9 +4,6 @@ import dao.interfaces.IRepository;
 import entities.Bill;
 import helper.Connector;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class BillsRepository implements IRepository<Bill> {
@@ -24,7 +21,7 @@ public class BillsRepository implements IRepository<Bill> {
             Integer id = conn.getKeysQuery(sql_txt);
             b = new Bill(id, null, 0);
         } catch (Exception e) {
-                System.out.println(e);
+            System.out.println(e);
         }
         return b;
     }

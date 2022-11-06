@@ -3,6 +3,10 @@ package entities;
 import java.sql.Timestamp;
 
 public class Bill {
+    private Integer id;
+    private Timestamp datetime;
+    private float total;
+
     public Bill() {
     }
 
@@ -40,8 +44,4 @@ public class Bill {
     public void setTotal(float total) {
         this.total = total;
     }
-
-    private Integer id;
-    private Timestamp datetime;
-    private float total;
 }

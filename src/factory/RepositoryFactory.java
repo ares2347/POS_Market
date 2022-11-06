@@ -5,13 +5,14 @@ import dao.interfaces.IRepository;
 import enums.RepositoryType;
 
 public class RepositoryFactory {
-    private RepositoryFactory(){};
+    private RepositoryFactory() {
+    }
 
-    public static IRepository createRepository(RepositoryType type){
-        switch (type){
-            case PRODUCT: return new ProductsRepository();
-            default: throw new IllegalArgumentException("Error");
+    public static IRepository createRepository(RepositoryType type) {
+        if (type == RepositoryType.PRODUCT) {
+            return new ProductsRepository();
         }
+        throw new IllegalArgumentException("Error");
     }
 
 }

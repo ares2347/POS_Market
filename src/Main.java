@@ -1,14 +1,16 @@
-import com.sun.deploy.uitoolkit.SynthesizedEventListener;
 import helper.DefaultScene;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import static helper.RootStage.rootStage;
 public class Main extends Application {
-    public static Stage rootStage;
 
+    public static void main(String[] args) {
+        launch(args);
+        //
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -18,10 +20,5 @@ public class Main extends Application {
         primaryStage.setScene(new DefaultScene(root));
         primaryStage.show();
 
-    }
-
-    public static void main(String[] args){
-        launch(args);
-        //
     }
 }

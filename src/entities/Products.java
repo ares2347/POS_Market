@@ -8,6 +8,16 @@ public class Products {
     public float subtotal;
     public float total;
 
+    public Products() {
+    }
+
+    public Products(Integer id, String name, float price, Integer quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     public float getSubtotal() {
         return this.quantity * price;
     }
@@ -18,16 +28,6 @@ public class Products {
 
     public float setTotal(float total) {
         return this.total = total;
-    }
-
-    public Products() {
-    }
-
-    public Products(Integer id, String name, float price, Integer quantity) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
     }
 
     public Integer getId() {

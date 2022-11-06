@@ -4,17 +4,13 @@ import helper.DefaultScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import sun.applet.Main;
 
+import static helper.RootStage.rootStage;
 import java.io.IOException;
 
 public class BillDetailsController {
@@ -33,9 +29,15 @@ public class BillDetailsController {
     public Button btHistory;
     public Text txAddress;
 
-    public void goToNewBill(ActionEvent actionEvent) {
+    public void goToNewBill(ActionEvent actionEvent) throws IOException {
+        Parent p = FXMLLoader.load(getClass().getResource("../home.fxml"));
+        rootStage.setTitle("New Bill");
+        rootStage.setScene(new DefaultScene(p));
     }
 
     public void goToHistory(ActionEvent actionEvent) throws Exception {
+        Parent p = FXMLLoader.load(getClass().getResource("../billsHistory/billsHistory.fxml"));
+        rootStage.setTitle("History");
+        rootStage.setScene(new DefaultScene(p));
     }
 }

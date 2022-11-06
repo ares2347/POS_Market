@@ -16,16 +16,16 @@ public class ProductsRepository implements IRepository<Products> {
             String sql_txt = "SELECT * FROM products";
             Connector conn = Connector.getInstance();
             ResultSet rs = conn.query(sql_txt);
-            while(rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 Float price = rs.getFloat("price");
                 Integer qty = rs.getInt("quantity");
-                Products p = new Products(id,name,price, qty);
+                Products p = new Products(id, name, price, qty);
                 pr.add(p);
             }
-        }catch (Exception e){
-            System.out.println("Error: "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return pr;
     }
@@ -60,10 +60,10 @@ public class ProductsRepository implements IRepository<Products> {
             arr.add(products.getQuantity());
             arr.add(products.getPrice());
             arr.add(products.getId());
-            if(conn.execute(sql_txt,arr)){
+            if (conn.execute(sql_txt, arr)) {
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return false;
@@ -76,30 +76,30 @@ public class ProductsRepository implements IRepository<Products> {
             Connector conn = Connector.getInstance();
             ArrayList arr = new ArrayList();
             arr.add(products.getId());
-            if(conn.execute(sql_txt,arr)){
+            if (conn.execute(sql_txt, arr)) {
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         return false;
     }
 
     @Override
-    public Products findOne(Integer id){
+    public Products findOne(Integer id) {
         try {
             String sql_txt = "select * from products where id=?";
             Connector conn = Connector.getInstance();
             ArrayList arr = new ArrayList();
             arr.add(id);
-            ResultSet rs = conn.executeQuery(sql_txt,arr);
+            ResultSet rs = conn.executeQuery(sql_txt, arr);
             while (rs.next()) {
                 int Id = rs.getInt("id");
                 String name = rs.getString("name");
-                int price  = rs.getInt("price");
+                int price = rs.getInt("price");
                 int quantity = rs.getInt("quantity");
-                return new Products(Id, name,quantity , price);
+                return new Products(Id, name, quantity, price);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         return null;
     }

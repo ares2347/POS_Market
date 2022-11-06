@@ -1,10 +1,13 @@
 package billDetails;
 
+import helper.DefaultScene;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
-
 public class BillDetailsController {
     public Text txBillId;
     public Text txDate;
@@ -19,6 +22,6 @@ public class BillDetailsController {
     public void goToNewBill(ActionEvent actionEvent) {
     }
 
-    public void goToHistory(ActionEvent actionEvent) {
+    public void goToHistory(ActionEvent actionEvent) throws Exception {
     }
 }

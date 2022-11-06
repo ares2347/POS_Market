@@ -12,7 +12,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <ComboBox fx:id="cboSelectNameProduct" layoutX="96.0" layoutY="52.0" prefHeight="51.0" prefWidth="454.0" promptText="Name Product" style="-fx-background-radius: 30;" />
+      <ComboBox onAction="#choose" fx:id="cboSelectNameProduct" layoutX="96.0" layoutY="52.0" prefHeight="51.0" prefWidth="454.0" promptText="Name Product" style="-fx-background-radius: 30;" />
       <TextField fx:id="txtQuantity" layoutX="618.0" layoutY="52.0" prefHeight="51.0" prefWidth="130.0" promptText="Quantity" style="-fx-background-radius: 30;">
          <font>
             <Font size="24.0" />

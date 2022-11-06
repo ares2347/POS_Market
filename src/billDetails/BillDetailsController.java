@@ -1,6 +1,10 @@
 package billDetails;
 
+import helper.DefaultScene;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,7 +36,6 @@ public class BillDetailsController {
     public void goToNewBill(ActionEvent actionEvent) {
     }
 
-    public void goToHistory(ActionEvent actionEvent) {
-
+    public void goToHistory(ActionEvent actionEvent) throws Exception {
     }
 }

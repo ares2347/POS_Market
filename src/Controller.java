@@ -1,21 +1,18 @@
-import dao.impls.BillsRepository;
-import dao.impls.ProductsRepository;
-import entities.Bill;
+import dao.impls.Repository;
 import entities.Products;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.net.URL;
-import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -41,21 +38,38 @@ public class Controller implements Initializable {
     private TextField txtQuantity;
     @FXML
     private TextField txtPrice;
-    private ObservableList<Products> productsObservableList = FXCollections.observableArrayList();
+    public Button test;
+    ObservableList<Products> pr = FXCollections.observableArrayList();
+
+    public float finalCost(){
+        float total = 0;
+        for (Products p: pr) {
+            float entryCost = p.getQuantity() * p.getPrice();
+            total = total + entryCost;
+        }
+        return total;
+    }
     @FXML
     private void handleAddProduct(ActionEvent actionEvent) {
+        float total = 0;
         Float price = Float.parseFloat(txtPrice.getText());
         Integer qty = Integer.parseInt(txtQuantity.getText());
         String s = cboSelectNameProduct.getValue().getName();
-        productsObservableList.add(new Products(null, s, price, qty));
-        tbvAddProduct.getItems().setAll(productsObservableList);
-        System.out.println("qty: "+qty);
+        Products newProducts = new Products(null, s, price, qty);
+
+        pr.add(newProducts);
+        tbvAddProduct.getItems().add(newProducts);
+//        total = qty * price;
+//        finalCost = finalCost + total;
+        txTotal.setText(String.valueOf(finalCost()));
+
+
     }
+
 
 
     @FXML
     private void handleSubmit(ActionEvent actionEvent) {
-        System.out.println(productsObservableList);
     }
 
     @FXML
@@ -68,19 +82,44 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         tdName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tdUnit.setCellValueFactory(new PropertyValueFactory<>("unit"));
         tdQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         tdPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         tdSubTotal.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
 
-        ProductsRepository rp = new ProductsRepository();
-        BillsRepository b = new BillsRepository();
+//        test.setOnAction(e -> {
+//            this.txTotal.setText(String.valueOf(finalCost()));
+//        });
+//        tbvAddProduct.setItems(pr);
+
+//        for (Products p : pr) {
+//            finalCost = finalCost + p.getSubtotal();
+//            System.out.println("FinalCost: "+finalCost);
+//        }
+//                this.txTotal.setText(String.valueOf(finalCost));
+
+        Repository rp = new Repository();
         ObservableList<Products> pr = FXCollections.observableArrayList();
         pr.addAll(rp.all());
         cboSelectNameProduct.setItems(pr);
-        System.out.println(b.create(new Bill()).getId());
-        System.out.println("...");
+        tbvAddProduct.setEditable(true);
+
+        tdQuantity.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        tdQuantity.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Products, Integer>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Products, Integer> event) {
+                float total = 0;
+                Products pr = event.getRowValue();
+                pr.setQuantity(event.getNewValue());
+
+                tbvAddProduct.refresh();
+                txTotal.setText(String.valueOf(finalCost()));
+
+
+            }
+        });
     }
 
     public void choose(ActionEvent actionEvent) {

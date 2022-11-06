@@ -5,8 +5,20 @@ public class Products {
     public String name;
     public float price;
     public Integer quantity;
+    public float subtotal;
+    public float total;
 
+    public float getSubtotal() {
+        return this.quantity * price;
+    }
 
+    public float getTotal() {
+        return total = total + getSubtotal();
+    }
+
+    public float setTotal(float total) {
+        return this.total = total;
+    }
 
     public Products() {
     }

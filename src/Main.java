@@ -1,3 +1,4 @@
+import com.sun.deploy.uitoolkit.SynthesizedEventListener;
 import helper.DefaultScene;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ public class Main extends Application {
         primaryStage.setTitle("POS Market");
         primaryStage.setScene(new DefaultScene(root));
         primaryStage.show();
+
     }
 
     public static void main(String[] args){

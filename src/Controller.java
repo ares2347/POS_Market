@@ -1,4 +1,4 @@
-import dao.impls.Repository;
+import dao.impls.ProductsRepository;
 import entities.Products;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -100,7 +100,7 @@ public class Controller implements Initializable {
 //        }
 //                this.txTotal.setText(String.valueOf(finalCost));
 
-        Repository rp = new Repository();
+        ProductsRepository rp = new ProductsRepository();
         ObservableList<Products> pr = FXCollections.observableArrayList();
         pr.addAll(rp.all());
         cboSelectNameProduct.setItems(pr);

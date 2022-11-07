@@ -162,7 +162,9 @@ public class Controller implements Initializable {
     }
 
     public void handleCancel(ActionEvent a) throws Exception {
-        tbvAddProduct.setItems(null);
+        pr.clear();
+        tbvAddProduct.refresh();
+        txTotal.setText(String.valueOf(finalCost()));
     }
 
     public void handleChangeHistory(ActionEvent actionEvent) throws Exception {

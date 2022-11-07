@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="billList" prefHeight="800.0" prefWidth="1280.0"
-            stylesheets="/css/billHistory.css" xmlns="http://javafx.com/javafx/8"
-            fx:controller="billsHistory.BillsHistoryController">
+
+<AnchorPane fx:id="billList" prefHeight="800.0" prefWidth="1280.0" stylesheets="/css/billHistory.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billsHistory.BillsHistoryController">
     <children>
-        <TableView fx:id="tbvBill" layoutX="15.0" layoutY="114.0" prefHeight="662.0" prefWidth="1253.0"
-                   style="-fx-background-radius: 30;">
+        <TableView fx:id="tbvBill" layoutX="15.0" layoutY="114.0" prefHeight="662.0" prefWidth="1253.0" style="-fx-background-radius: 30;">
             <columns>
-                <TableColumn fx:id="tdId" prefWidth="127.0" text="ID"/>
-                <TableColumn fx:id="tdDate" prefWidth="325.0" text="DATE"/>
-                <TableColumn fx:id="tdNameCustomer" prefWidth="800.0" text="NAME CUSTOMER"/>
+                <TableColumn fx:id="tdId" prefWidth="127.0" text="ID" />
+                <TableColumn fx:id="tdDate" prefWidth="325.0" text="DATE" />
+                <TableColumn fx:id="tdTotal" prefWidth="558.0" text="TOTAL" />
+            <TableColumn fx:id="tdAction" maxWidth="242.0" prefWidth="242.0" text="ACTION" />
             </columns>
         </TableView>
-        <TextField fx:id="txtSearch" layoutX="619.0" layoutY="26.0" prefHeight="48.0" prefWidth="343.0"
-                   promptText="id, name customer" style="-fx-background-radius: 30;"/>
-        <Button fx:id="btSearch" layoutX="991.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleSearch"
-                prefHeight="48.0" prefWidth="116.0" style="-fx-background-radius: 30;" text="Search"/>
-        <Button layoutX="1139.0" layoutY="26.0" mnemonicParsing="false" onAction="#goToNewBill" prefHeight="48.0"
-                prefWidth="116.0" style="-fx-background-radius: 30;" text="New Bill"/>
-        <Line endX="102.0" endY="-99.0" layoutX="1022.0" layoutY="129.0" startX="102.0" startY="-61.0"/>
+        <TextField fx:id="txtSearch" layoutX="619.0" layoutY="26.0" prefHeight="48.0" prefWidth="343.0" promptText="id, name customer" style="-fx-background-radius: 30;" />
+        <Button fx:id="btSearch" layoutX="991.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="48.0" prefWidth="116.0" style="-fx-background-radius: 30;" text="Search" />
+        <Button layoutX="1139.0" layoutY="26.0" mnemonicParsing="false" onAction="#goToNewBill" prefHeight="48.0" prefWidth="116.0" style="-fx-background-radius: 30;" text="New Bill" />
+        <Line endX="102.0" endY="-99.0" layoutX="1022.0" layoutY="129.0" startX="102.0" startY="-61.0" />
     </children>
 </AnchorPane>

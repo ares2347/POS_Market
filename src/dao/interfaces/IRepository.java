@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface IRepository<S> {
     ArrayList<S> all();
 
-    S create(S s);
+    S create();
 
     boolean update(S s);
 

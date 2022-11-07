@@ -20,8 +20,7 @@ public class ProductsRepository implements IRepository<Products> {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 Float price = rs.getFloat("price");
-                Integer qty = rs.getInt("quantity");
-                Products p = new Products(id, name, price, qty);
+                Products p = new Products(id, name, price);
                 pr.add(p);
             }
         } catch (Exception e) {
@@ -31,22 +30,7 @@ public class ProductsRepository implements IRepository<Products> {
     }
 
     @Override
-    public Products create(Products products) {
-//        try {
-//            String sql_txt  = "insert into products(name, author, qty) values(?,?,?)";
-//            Connector conn = Connector.getInstance();
-//            ArrayList arr = new ArrayList();
-//            arr.add(book.getName());
-//            arr.add(book.getAuthor());
-//            arr.add(book.getQty());
-//
-//            if (conn.executeAdd(sql_txt,arr)) {
-//                return true;
-//            }
-//        } catch (Exception e){
-//
-//        }
-//
+    public Products create() {
         return new Products();
     }
 

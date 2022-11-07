@@ -5,8 +5,6 @@ public class Products {
     public String name;
     public float price;
     public Integer quantity;
-    public float subtotal;
-    public float total;
 
     public Products() {
     }
@@ -18,16 +16,14 @@ public class Products {
         this.quantity = quantity;
     }
 
+    public Products(Integer id, String name, float price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
     public float getSubtotal() {
         return this.quantity * price;
-    }
-
-    public float getTotal() {
-        return total = total + getSubtotal();
-    }
-
-    public float setTotal(float total) {
-        return this.total = total;
     }
 
     public Integer getId() {

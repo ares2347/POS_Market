@@ -24,6 +24,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -61,7 +64,6 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<Products> productsList = FXCollections.observableArrayList();
-        bill = billsRepository.create();
         productsList.setAll(rp.all());
 
         cboSelectNameProduct.setItems(productsList);
@@ -85,15 +87,19 @@ public class Controller implements Initializable {
         tdQuantity.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Products, Integer>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<Products, Integer> event) {
-                float total = 0;
-                Products pr = event.getRowValue();
-                pr.setQuantity(event.getNewValue());
-
+                Products product = event.getRowValue();
+                if (event.getNewValue()<=0){
+                    pr.remove(product);
+                }else{
+                    pr.get(pr.indexOf(product)).setQuantity(event.getNewValue());
+                }
                 tbvAddProduct.refresh();
                 txTotal.setText(String.valueOf(finalCost()));
                 bill.setTotal(finalCost());
+                addBill.setDisable(pr.size()<=0? true: false);
             }
         });
+        addBill.setDisable(pr.size()<=0? true: false);
     }
 
     boolean checkValidate() throws Exception {
@@ -136,11 +142,11 @@ public class Controller implements Initializable {
                 selectedProduct.setQuantity(qty);
                 pr.add(selectedProduct);
             }
+            addBill.setDisable(pr.size()<=0? true: false);
+            txTotal.setText(String.valueOf(finalCost()));
             txtQuantity.clear();
             txtPrice.clear();
             cboSelectNameProduct.getSelectionModel().clearSelection();
-            txTotal.setText(String.valueOf(finalCost()));
-            bill.setTotal(finalCost());
         }catch (Exception e){}
 
     }
@@ -148,9 +154,10 @@ public class Controller implements Initializable {
 
     public void handleSubmit(ActionEvent actionEvent) {
         try {
-            System.out.println(pr.size());
+            bill =billsRepository.create() ;
             if(pr.size() <=0) throw new Exception();
             bill.setDatetime(new Date());
+            bill.setTotal(finalCost());
             boolean res = billsRepository.uploadDetail(bill, new ArrayList<>(pr));
             if (res) {
                 Parent listBook = FXMLLoader.load(getClass().getResource("billDetails/billDetails.fxml"));
@@ -165,6 +172,7 @@ public class Controller implements Initializable {
         pr.clear();
         tbvAddProduct.refresh();
         txTotal.setText(String.valueOf(finalCost()));
+        addBill.setDisable(pr.size()<=0? true: false);
     }
 
     public void handleChangeHistory(ActionEvent actionEvent) throws Exception {
@@ -173,7 +181,7 @@ public class Controller implements Initializable {
         rootStage.setScene(new DefaultScene(history));
     }
 
-    public void choose(ActionEvent actionEvent) {
+    public void choose(ActionEvent actionEvent) throws NullPointerException {
         txtPrice.setText(String.valueOf(cboSelectNameProduct.getSelectionModel().getSelectedItem().getPrice()));
         txtPrice.setEditable(false);
     }
